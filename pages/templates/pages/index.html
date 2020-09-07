@@ -1,0 +1,10 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<div class="centered-div">
+    {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+    {% else %}
+        <p>Please <a href="/accounts/login">Login</a></p>
+    {% endif %}
+</div>
+{% endblock %}

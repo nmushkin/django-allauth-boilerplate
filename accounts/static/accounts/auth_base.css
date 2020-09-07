@@ -1,0 +1,19 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.centered-account {
+    width: fit-content;
+}
+
+.message-div {
+    text-align: justify;
+}
+
+.options-links {
+    text-align: center;
+    margin: 20px;
+}

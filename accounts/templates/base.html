@@ -1,0 +1,36 @@
+<!-- Overrides allauth's base.html template -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'accounts/auth_base.css' %}">
+    <title>{% block head_title %}{% endblock %}</title>
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+      <div class="centered-account">
+        {% block body %}
+        <div class="options-links">
+            {% if user.is_authenticated %}
+            <p><a href="/">Home</a> | <a href="{% url 'account_email' %}">Change E-mail</a> | <a href="{% url 'account_logout' %}">Sign Out</a></li></p>
+            {% else %}
+            <p><a href="/">Home</a> | <a href="{% url 'account_login' %}">Sign In</a> | <a href="{% url 'account_signup' %}">Sign Up</a></p>
+            {% endif %}
+        </div>
+        {% if messages %}
+        <div class="message-div">
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+        {% endblock %}
+        {% block extra_body %}
+        {% endblock %}
+    </div>
+  </body>
+</html>
